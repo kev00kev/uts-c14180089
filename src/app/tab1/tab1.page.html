@@ -1,17 +1,45 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      NOTE
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<!-- Judul -->
+Judul : <ion-input placeholder="Judul" [(ngModel)]="judul"></ion-input>
+<br>
+<!-- Isi Note -->
+Isi : <ion-input placeholder="Isi Note" [(ngModel)]="isi"></ion-input>
+<br>
+<!-- Nilai Note -->
+Nilai : <ion-input placeholder="Nilai Note" [(ngModel)]="nilai"></ion-input>
+<br>
+Gambar : <ion-fab-button (click)="TambahFoto()">
+  <ion-icon name="camera"></ion-icon>
+</ion-fab-button>
+<br>
+<ion-button (click)="upload()">add note</ion-button>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+
+<ion-grid>
+     <ion-row  *ngFor="let data of isiData | async">
+       <ion-col>
+         <h1 style="color: coral;">{{data.judul}} </h1> 
+       </ion-col>
+       <ion-col>
+         <p style="color:blue">{{data.isi}}</p>
+       </ion-col>
+       <ion-col>
+         <ion-button (click)="detail(data.id)">Detail</ion-button>
+       </ion-col>
+     </ion-row>
+</ion-grid>
+
+
+
+
+
+
 </ion-content>
